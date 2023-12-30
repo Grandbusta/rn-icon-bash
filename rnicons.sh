@@ -1,11 +1,3 @@
-#Bash Script to setup react-native-vector-icons for IOS and Android
-
-# Usage:
-# Install react-native-vector-icons in your app and run the script below in your app root directry
-
-# Script:
-# bash <(curl -s https://gist.githubusercontent.com/Grandbusta/3bac9985a1c8a8580f5d271e13a88705/raw/cbe4676e07c453a42e5c26de9aae490ce97ae2db/rnicons.sh)
-
 PACKAGE_JSON_PATH="package.json"
 PACKAGE_NAME="react-native-vector-icons"
 MODULE_DIRECTORY="node_modules/react-native-vector-icons"
@@ -20,8 +12,9 @@ setupAndroid(){
     if [[ $content == *"$ANDROID_MODULE_TO_APPLY"* ]]; then
         echo "Already applied to $ANDROID_BUILD_GRADLE_PATH"
     else
-        echo apply from: $ANDROID_MODULE_TO_APPLY_TEXT >> $ANDROID_BUILD_GRADLE_PATH
+        echo "apply from: $ANDROID_MODULE_TO_APPLY_TEXT" >> $ANDROID_BUILD_GRADLE_PATH
         echo "Applied to $ANDROID_BUILD_GRADLE_PATH"
+        echo "Android setup successfully"
         exit 1
     fi
 }
@@ -76,6 +69,7 @@ setupIOS(){
     else
         echo "<key>UIAppFonts</key> already exist in $plist_path"
     fi
+    echo "IOS setup successfully"
 }
 
 checkDirectory(){
